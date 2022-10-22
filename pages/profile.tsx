@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Profile.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import Navbar from "../components/card/navbar";
+import Navbar from "../components/navbar";
 
 const Profile = () => {
   const isLoading = false;
