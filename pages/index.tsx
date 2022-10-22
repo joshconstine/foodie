@@ -1,32 +1,33 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { useState } from "react";
 import Button from "../components/button";
 import Card from "../components/card";
 import Navbar from "../components/navbar";
-import Avatar from "@mui/material/Avatar";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
-import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
-import Typography from "@mui/material/Typography";
 import styles from "../styles/Home.module.css";
+import { useRouter } from "next/router";
 
-const filters = ["mexican", "american", "sushi", "subs", "coffee"];
+const filterOptions = ["mexican", "american", "sushi", "subs", "coffee"];
 const Home: NextPage = () => {
+  const router = useRouter();
   const [showDialog, setShowDialog] = useState(false);
+  const [filters, setFilters] = useState<string[]>([]);
   const toggleDialog = () => {
     setShowDialog(!showDialog);
   };
   const handleClose = () => {
-    console.log("handleClose");
     setShowDialog(!showDialog);
   };
   const handleListItemClick = (value: string) => {
-    console.log("handleClose", value);
+    if (filters.includes(value))
+      setFilters(filters.filter((filter) => filter !== value));
+    else {
+      setFilters([...filters, value]);
+    }
   };
 
   return (
@@ -41,7 +42,12 @@ const Home: NextPage = () => {
         <Navbar />
         <h1>Great spots in San Diego</h1>
         <Button onClick={toggleDialog}>Filters</Button>
-        <Card id="34" size="small" imgUrl="/static/restaurant1.jpg" />
+        {filters.map((filter, i) => (
+          <div key={i}>{filter}</div>
+        ))}
+        <div onClick={() => router.push("/restaurant/1")}>
+          <Card id="34" size="small" imgUrl="/static/restaurant1.jpg" />
+        </div>
         <Card id="34" size="small" imgUrl="/static/restaurant2.jpg" />
         <Card id="34" size="large" imgUrl="/static/restaurant3.jpg" />
       </main>
@@ -57,7 +63,7 @@ const Home: NextPage = () => {
       </footer>
       <Dialog onClose={handleClose} open={showDialog}>
         <List sx={{ pt: 0 }}>
-          {filters.map((filter) => (
+          {filterOptions.map((filter) => (
             <ListItem
               button
               onClick={() => handleListItemClick(filter)}
