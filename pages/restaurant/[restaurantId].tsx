@@ -30,8 +30,6 @@ export async function getStaticProps(context: any) {
   const restaurantArray = dummyData.filter(
     (restaurant) => restaurant.id === restaurantId
   );
-  console.log(restaurantArray);
-  console.log(dummyData);
   return {
     props: {
       restaurant: restaurantArray.length > 0 ? restaurantArray[0] : {},
