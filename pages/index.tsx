@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Card from "../components/card";
+import Navbar from "../components/card/navbar";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -14,7 +15,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        Great spots in San Diego
+        <Navbar />
+        <h1>Great spots in San Diego</h1>
         <Card id="34" size="small" />
         <Card id="34" size="small" />
         <Card id="34" size="large" />
