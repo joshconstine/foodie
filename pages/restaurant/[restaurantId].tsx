@@ -3,22 +3,26 @@ import { useRouter } from "next/router";
 import styles from "./Restaurant.module.css";
 import clsx from "classnames";
 import Navbar from "../../components/navbar";
+import Banner from "../../components/navbar/Banner";
 
 const dummyData = [
   {
     id: "1",
     name: "cotixan",
     type: "mexican",
+    imgUrl: "/static/restaurant1.jpg",
   },
   {
     id: "2",
     name: "chic-fila",
     type: "american",
+    imgUrl: "/static/restaurant2.jpg",
   },
   {
     id: "3",
     name: "subway",
     type: "subs",
+    imgUrl: "/static/restaurant3.jpg",
   },
 ];
 
@@ -49,23 +53,12 @@ export async function getStaticPaths() {
 }
 
 const Restaurant = ({ restaurant }: any) => {
-  const router = useRouter();
-  const { name, type } = restaurant;
-
+  const { name, type, imgUrl } = restaurant;
   return (
     <div className={styles.container}>
       <Navbar />
-      <div className={styles.modal}>
-        <div className={styles.modalBody}>
-          <div className={styles.modalBodyContent}>
-            <div className={styles.col1}>
-              <p className={styles.publishTime}>{name}</p>
-              <p className={styles.title}>{type}</p>
-            </div>
-            <div className={styles.col2}></div>
-          </div>
-        </div>
-      </div>
+      <Banner name={name} imgUrl={imgUrl} />
+      {type}
     </div>
   );
 };

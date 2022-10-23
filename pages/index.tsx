@@ -48,8 +48,12 @@ const Home: NextPage = () => {
         <div onClick={() => router.push("/restaurant/1")}>
           <Card id="34" size="small" imgUrl="/static/restaurant1.jpg" />
         </div>
-        <Card id="34" size="small" imgUrl="/static/restaurant2.jpg" />
-        <Card id="34" size="large" imgUrl="/static/restaurant3.jpg" />
+        <div onClick={() => router.push("/restaurant/2")}>
+          <Card id="34" size="small" imgUrl="/static/restaurant2.jpg" />
+        </div>
+        <div onClick={() => router.push("/restaurant/3")}>
+          <Card id="34" size="large" imgUrl="/static/restaurant3.jpg" />
+        </div>
       </main>
 
       <footer className={styles.footer}>

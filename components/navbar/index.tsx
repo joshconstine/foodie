@@ -10,22 +10,22 @@ const Navbar = () => {
   const [username, setUsername] = useState("");
   const router = useRouter();
 
-  const handleOnClickHome = (e) => {
+  const handleOnClickHome = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     router.push("/");
   };
 
-  const handleOnClickMyList = (e) => {
+  const handleOnClickMyList = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     router.push("/profile");
   };
 
-  const handleShowDropdown = (e) => {
+  const handleShowDropdown = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setShowDropdown(!showDropdown);
   };
 
-  const handleSignout = async (e) => {
+  const handleSignout = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     console.log("handle signout here");
   };
